@@ -1,8 +1,13 @@
 
 package oop_hw4_abstraction;
 
-// @author JBF
-
+/** S2101
+Joyce Ferrer
+Ryu Ken Lindo
+Jeffrey Dollopac
+Mikko Bautista
+* 
+**/
 
 public class OOP_HW4_Abstraction {
 
@@ -13,5 +18,5 @@ public class OOP_HW4_Abstraction {
         
     }
 } 
-        
+         
    
