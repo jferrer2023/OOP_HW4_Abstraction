@@ -200,21 +200,23 @@ public class OOP_HW4_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_ItemDeviceActionPerformed
 
     private void btn_CalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CalculateActionPerformed
-        try {
-        double phonePrice = Double.parseDouble(txt_PhonePrice.getText()); // Get phone price
-        int phoneQty = Integer.parseInt(txt_PhoneQty.getText()); // Get phone quantity
-        double repairPerHr = Double.parseDouble(txt_RepairPerHr.getText()); // Get repair price per hour
-        int repairNoOfHrs = Integer.parseInt(txt_RepairNoOfHrs.getText()); // Get repair hours
+  try {
+        // Get values from text fields
+        double phonePrice = Double.parseDouble(txt_PhonePrice.getText());
+        int phoneQty = Integer.parseInt(txt_PhoneQty.getText());
+        double repairPerHr = Double.parseDouble(txt_RepairPerHr.getText());
+        int repairNoOfHrs = Integer.parseInt(txt_RepairNoOfHrs.getText());
 
-        // Calculate the total sales
-        double totalPhoneSales = phonePrice * phoneQty; // Total sales from phones
-        double totalRepairSales = repairPerHr * repairNoOfHrs; // Total sales from repairs
+        // Create an instance of the concrete SalesCalculator implementation
+        SalesCalculator calculator = new SalesCalculatorImpl();
 
-        // Calculate the grand total sales
-        double totalSales = totalPhoneSales + totalRepairSales;
-
-        // Display the total sales in the txt_Totalsales text field
-        txt_Totalsales.setText(String.format("%.2f", totalSales)); // Formatting to 2 decimal places
+        // Perform calculations using the methods from the interface
+        double totalPhoneSales = calculator.calculatePhoneSales(phonePrice, phoneQty);
+        double totalRepairSales = calculator.calculateRepairSales(repairPerHr, repairNoOfHrs);
+        double totalSales = calculator.calculateTotalSales(totalPhoneSales, totalRepairSales);
+ 
+        // Display the total sales
+        txt_Totalsales.setText(String.format("%.2f", totalSales));
 
     } catch (NumberFormatException e) {
         // Show an error message if input values are invalid
